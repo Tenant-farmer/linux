@@ -22,19 +22,20 @@ if [ "$START_NUM" -gt "$END_NUM" ]; then
     exit 1
 fi
 
-# Create screens with given name from start to end number
+# Delete screens with given name from start to end number
 for i in $(seq $START_NUM $END_NUM)
 do
-    # Check if screen already exists
-    if ! screen -list | grep -q "${SCREEN_NAME}${i}"; then
-        # Create new screen (-d -m: create in detached mode)
-        screen -d -m -S "${SCREEN_NAME}${i}"
-        echo "Screen created: ${SCREEN_NAME}${i}"
+    SCREEN_ID=$(screen -list | grep "${SCREEN_NAME}${i}" | cut -f1 -d'.' | tr -d '\t ')
+    
+    if [ ! -z "$SCREEN_ID" ]; then
+        # Kill the screen session
+        screen -X -S "$SCREEN_ID" quit
+        echo "Screen deleted: ${SCREEN_NAME}${i}"
     else
-        echo "Screen already exists: ${SCREEN_NAME}${i}"
+        echo "Screen not found: ${SCREEN_NAME}${i}"
     fi
 done
 
-# Display list of running screens
-echo -e "\nCurrent running screens:"
-screen -list
+# Display remaining screens
+echo -e "\nRemaining running screens:"
+screen -list 
