@@ -24,13 +24,13 @@ This will create 5 screen sessions named my_screen_1, my_screen_2, my_screen_3, 
 
 
 
-### delete_screens.sh
+### delete_screen.sh
 Deletes multiple screen sessions with sequential numbers.
 
 Usage:
 
 ```bash
-./delete_screens.sh <screen_name> <start_number> <end_number>
+./delete_screen.sh <screen_name> <start_number> <end_number>
 ```
 
 Example: ./delete_screen.sh my_screen 1 5
