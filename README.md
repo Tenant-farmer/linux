@@ -6,7 +6,7 @@ Simple bash scripts to create and delete multiple screen sessions in Linux.
 
 ### Make scripts executable
 ```bash
-chmod +x multi_screen.sh delete_screens.sh
+chmod +x multi_screen.sh delete_screen.sh
 ```
 
 
@@ -33,7 +33,7 @@ Usage:
 ./delete_screens.sh <screen_name> <start_number> <end_number>
 ```
 
-Example: ./delete_screens.sh my_screen 1 5
+Example: ./delete_screen.sh my_screen 1 5
 
 This will delete 5 screen sessions named my_screen_1, my_screen_2, my_screen_3, my_screen_4, and my_screen_5.
 
